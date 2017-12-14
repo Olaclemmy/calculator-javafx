@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class CalculatorModelTest {
     @Test
     public void calculate() throws Exception {
-        
+
         // Given
         StringBuilder output = new StringBuilder();
         CalculatorModel calculatorModel = new CalculatorModel(output::append);

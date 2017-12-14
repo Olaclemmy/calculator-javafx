@@ -17,13 +17,13 @@ class CalculatorModel {
 
     void insertSymbol(String text) {
         stringBuilder.append(text);
-        sendToOutput();
+        print();
     }
 
     void clear() {
         stringBuilder.setLength(0);
         session.clear();
-        sendToOutput();
+        print();
     }
 
     void calculate() {
@@ -32,7 +32,7 @@ class CalculatorModel {
             Double result = session.execute(param);
             stringBuilder.setLength(0);
             stringBuilder.append(result);
-            sendToOutput();
+            print();
         }
     }
 
@@ -44,7 +44,7 @@ class CalculatorModel {
         } else {
             stringBuilder.insert(0, "-");
         }
-        sendToOutput();
+        print();
     }
 
     void selectOperation(CalculatorOperation calculatorOperation) {
@@ -53,7 +53,7 @@ class CalculatorModel {
         stringBuilder.setLength(0);
     }
 
-    private void sendToOutput() {
+    private void print() {
         output.accept(stringBuilder.toString());
     }
 
