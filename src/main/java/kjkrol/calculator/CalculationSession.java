@@ -1,28 +1,29 @@
 package kjkrol.calculator;
 
-import java.util.function.BiFunction;
-
 import static java.util.Objects.nonNull;
 
 class CalculationSession {
-    private BiFunction<Double, Double, Double> selectedOperation;
+    private CalculatorOperation calculatorOperation;
     private Double firstParam;
 
-    void prepare(Double firstParam, BiFunction<Double, Double, Double> selectedOperation) {
-        this.selectedOperation = selectedOperation;
+    void prepare(Double firstParam, CalculatorOperation calculatorOperation) {
+        this.calculatorOperation = calculatorOperation;
         this.firstParam = firstParam;
     }
 
     boolean isReady() {
-        return nonNull(selectedOperation) && nonNull(firstParam);
+        return nonNull(calculatorOperation) && nonNull(firstParam);
     }
 
     Double execute(Double secondParam) {
-        return selectedOperation.apply(firstParam, secondParam);
+        Double result = calculatorOperation.execute(firstParam, secondParam);
+        firstParam = result;
+        calculatorOperation = null;
+        return result;
     }
 
     void clear() {
-        selectedOperation = null;
+        calculatorOperation = null;
         firstParam = null;
     }
 }
