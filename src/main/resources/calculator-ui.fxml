@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 <VBox alignment="CENTER" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="kjkrol.calculator.CalculatorController">
+    <stylesheets>
+        <URL value="@calculator.css"/>
+    </stylesheets>
     <fx:define>
         <Font fx:id="FONT" size="18"/>
     </fx:define>
 
     <StackPane>
-        <Rectangle fill="TRANSPARENT" height="50" stroke="GRAY" width="230"/>
-        <Text fx:id="output" textAlignment="RIGHT"/>
+        <TextField fx:id="output" styleClass="output-text-field" editable="false"/>
     </StackPane>
 
+
     <HBox alignment="CENTER" spacing="5.0">
-        <Button onAction="#clear" prefWidth="50" text="AC"/>
-        <Button onAction="#invertSign" prefWidth="50" text="±"/>
-        <Button onAction="#percentOf" prefWidth="50" text="\%" disable="true"/>
-        <Button onAction="#divide" prefWidth="50" text="/" disable="true"/>
+        <Button onAction="#clear" prefWidth="50" text="AC" styleClass="action-button"/>
+        <Button onAction="#invertSign" prefWidth="50" text="±" styleClass="action-button"/>
+        <Button onAction="#percentOf" prefWidth="50" text="\%" disable="true" styleClass="action-button"/>
+        <Button onAction="#divide" prefWidth="50" text="/" disable="true" styleClass="operation-button"/>
     </HBox>
     <HBox alignment="CENTER" spacing="5.0">
         <Button onAction="#insertSymbol" prefWidth="50" text="7"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="8"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="9"/>
-        <Button onAction="#multiply" prefWidth="50" text="*"/>
+        <Button onAction="#multiply" prefWidth="50" text="*" styleClass="operation-button"/>
     </HBox>
     <HBox alignment="CENTER" spacing="5.0">
         <Button onAction="#insertSymbol" prefWidth="50" text="4"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="5"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="6"/>
-        <Button onAction="#subtract" prefWidth="50" text="-"/>
+        <Button onAction="#subtract" prefWidth="50" text="-" styleClass="operation-button"/>
     </HBox>
     <HBox alignment="CENTER" spacing="5.0">
         <Button onAction="#insertSymbol" prefWidth="50" text="1"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="2"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="3"/>
-        <Button onAction="#add" prefWidth="50" text="+"/>
+        <Button onAction="#add" prefWidth="50" text="+" styleClass="operation-button"/>
     </HBox>
     <HBox alignment="CENTER" spacing="5.0">
         <Button onAction="#insertSymbol" prefWidth="105" text="0"/>
         <Button onAction="#insertSymbol" prefWidth="50" text="."/>
-        <Button onAction="#calculate" prefWidth="50" text="="/>
+        <Button onAction="#calculate" prefWidth="50" text="=" styleClass="operation-button"/>
     </HBox>
     <HBox/>
 

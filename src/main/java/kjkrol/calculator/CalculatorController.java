@@ -3,7 +3,7 @@ package kjkrol.calculator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
 
 import static kjkrol.calculator.CalculatorOperation.ADD;
 import static kjkrol.calculator.CalculatorOperation.MULTIPLY;
@@ -14,7 +14,7 @@ public class CalculatorController {
     private final CalculatorModel calculatorModel = new CalculatorModel(this::displayOnOutput);
 
     @FXML
-    private Text output;
+    private TextField output;
 
     @FXML
     private void insertSymbol(ActionEvent actionEvent) {
