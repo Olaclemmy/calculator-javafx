@@ -17,7 +17,6 @@ class CalculationSession {
 
     Double execute(Double secondParam) {
         Double result = calculatorOperation.execute(firstParam, secondParam);
-        firstParam = result;
         calculatorOperation = null;
         return result;
     }
