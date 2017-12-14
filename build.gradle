@@ -28,5 +28,11 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'App'
+mainClassName = 'kjkrol.calculator.CalculatorApp'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
 
