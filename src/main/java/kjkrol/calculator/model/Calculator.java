@@ -2,55 +2,63 @@ package kjkrol.calculator.model;
 
 import kjkrol.calculator.base.MathOperation;
 
-import java.util.function.Consumer;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 public class Calculator {
 
-    private final ComputationSession session = new ComputationSession();
-    private final RealNumberBuilder realNumberBuilder = new RealNumberBuilder();
-    private final Consumer<Double> output;
+    private static final double DEFAULT_VALUE = 0.0;
 
-    public Calculator(Consumer<Double> output) {
-        this.output = output;
+    private MathOperation mathOperation;
+    private Double cachedNumber;
+
+    private final RealNumberBuilder numberBuilder = new RealNumberBuilder();
+
+    public double insertSymbol(String text) {
+        numberBuilder.append(text.charAt(0));
+        return numberBuilder.build();
     }
 
-    public void insertSymbol(String text) {
-        realNumberBuilder.append(text.charAt(0));
-        print(realNumberBuilder.build());
+    public double invertSign() {
+        numberBuilder.invertSign();
+        return numberBuilder.build();
     }
 
-    public void invertSign() {
-        realNumberBuilder.invertSign();
-        print(realNumberBuilder.build());
+    public double insertFractionalPart() {
+        numberBuilder.insertFractional();
+        return numberBuilder.build();
     }
 
-    public void calculate() {
-        if (session.isReady()) {
-            Double param = realNumberBuilder.build();
-            realNumberBuilder.reset();
-            Double result = session.execute(param);
-            print(result);
+    public double selectMathOperation(MathOperation mathOperation) {
+        this.mathOperation = mathOperation;
+        Double param = numberBuilder.build();
+        if (isNull(this.cachedNumber)) {
+            this.cachedNumber = param;
         }
+        numberBuilder.reset();
+        return param;
     }
 
-    public void clear() {
-        realNumberBuilder.reset();
-        session.reset();
-        print(realNumberBuilder.build());
+    public double calculate() {
+        Double param = numberBuilder.build();
+        if (isReady()) {
+            cachedNumber = mathOperation.execute(cachedNumber, param);
+            numberBuilder.reset();
+            mathOperation = null;
+            return cachedNumber;
+        }
+        return param;
     }
 
-    public void insertFractionalPart() {
-        realNumberBuilder.insertFractional();
+    public double clear() {
+        numberBuilder.reset();
+        mathOperation = null;
+        cachedNumber = null;
+        return DEFAULT_VALUE;
     }
 
-    public void selectOperation(MathOperation mathOperation) {
-        Double param = realNumberBuilder.build();
-        session.prepare(param, mathOperation);
-        realNumberBuilder.reset();
-    }
-
-    private void print(Double number) {
-        output.accept(number);
+    private boolean isReady() {
+        return nonNull(mathOperation) && nonNull(cachedNumber);
     }
 
 }

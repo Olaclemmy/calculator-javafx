@@ -12,7 +12,7 @@ import static kjkrol.calculator.base.MathOperation.SUBTRACT;
 
 public class CalculatorController {
 
-    private final Calculator calculator = new Calculator(this::displayOnOutput);
+    private final Calculator calculator = new Calculator();
 
     @FXML
     private TextField output;
@@ -20,27 +20,32 @@ public class CalculatorController {
     @FXML
     private void insertSymbol(ActionEvent actionEvent) {
         String value = ((Button) actionEvent.getSource()).getText();
-        calculator.insertSymbol(value);
+        double result = calculator.insertSymbol(value);
+        refreshOutput(result);
     }
 
     @FXML
     private void clear(ActionEvent actionEvent) {
-        calculator.clear();
+        double result = calculator.clear();
+        refreshOutput(result);
     }
 
     @FXML
     private void add(ActionEvent actionEvent) {
-        calculator.selectOperation(ADD);
+        double result = calculator.selectMathOperation(ADD);
+        refreshOutput(result);
     }
 
     @FXML
     private void subtract(ActionEvent actionEvent) {
-        calculator.selectOperation(SUBTRACT);
+        double result = calculator.selectMathOperation(SUBTRACT);
+        refreshOutput(result);
     }
 
     @FXML
     private void multiply(ActionEvent actionEvent) {
-        calculator.selectOperation(MULTIPLY);
+        double result = calculator.selectMathOperation(MULTIPLY);
+        refreshOutput(result);
     }
 
     @FXML
@@ -55,20 +60,23 @@ public class CalculatorController {
 
     @FXML
     private void calculate(ActionEvent actionEvent) {
-        calculator.calculate();
+        double result = calculator.calculate();
+        refreshOutput(result);
     }
 
     @FXML
     private void invertSign(ActionEvent actionEvent) {
-        calculator.invertSign();
+        double result = calculator.invertSign();
+        refreshOutput(result);
     }
 
     @FXML
     private void insertFractionalPart(ActionEvent actionEvent) {
-        calculator.insertFractionalPart();
+        double result = calculator.insertFractionalPart();
+        refreshOutput(result);
     }
 
-    private void displayOnOutput(Double number) {
+    private void refreshOutput(Double number) {
         output.setText(number.toString());
     }
 }

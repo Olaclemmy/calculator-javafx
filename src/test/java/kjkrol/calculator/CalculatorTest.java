@@ -4,6 +4,7 @@ import kjkrol.calculator.base.MathOperation;
 import kjkrol.calculator.model.Calculator;
 import org.junit.Test;
 
+import static java.lang.Double.MIN_VALUE;
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
@@ -11,19 +12,27 @@ public class CalculatorTest {
     public void calculate() throws Exception {
 
         // Given
-        StringBuilder output = new StringBuilder();
-        Calculator calculator = new Calculator(output::append);
+        Calculator calculator = new Calculator();
         calculator.insertSymbol("1");
         calculator.insertSymbol("0");
-        calculator.selectOperation(MathOperation.ADD);
+        calculator.selectMathOperation(MathOperation.ADD);
         calculator.insertSymbol("7");
-        output.setLength(0);
 
         // When
-        calculator.calculate();
+        double result = calculator.calculate();
 
         // Then
-        assertEquals("17.0", output.toString());
+        assertEquals(17.0, result, MIN_VALUE);
+
+        // And
+        calculator.selectMathOperation(MathOperation.MULTIPLY);
+        calculator.insertSymbol("2");
+
+        // When
+        result = calculator.calculate();
+
+        // Then
+        assertEquals(34.0, result, MIN_VALUE);
     }
 
 }
