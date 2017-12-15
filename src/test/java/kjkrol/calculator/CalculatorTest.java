@@ -1,7 +1,7 @@
 package kjkrol.calculator;
 
+import kjkrol.calculator.base.CalculatorMathOperation;
 import kjkrol.calculator.model.Calculator;
-import kjkrol.calculator.model.CalculatorMathOperation;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
