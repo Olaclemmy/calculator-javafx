@@ -5,7 +5,7 @@ import kjkrol.calculator.base.CalculatorMathOperation;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-public class ComputationSession {
+class ComputationSession {
     private CalculatorMathOperation mathOperation;
     private Double firstParam;
 
