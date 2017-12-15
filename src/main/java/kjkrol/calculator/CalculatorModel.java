@@ -17,9 +17,8 @@ class CalculatorModel {
         print(realNumberBuilder.build());
     }
 
-    void clear() {
-        realNumberBuilder.reset();
-        session.reset();
+    void invertSign() {
+        realNumberBuilder.invertSign();
         print(realNumberBuilder.build());
     }
 
@@ -32,13 +31,14 @@ class CalculatorModel {
         }
     }
 
-    void insertFractionalPart() {
-        realNumberBuilder.insertFractional();
+    void clear() {
+        realNumberBuilder.reset();
+        session.reset();
+        print(realNumberBuilder.build());
     }
 
-    void invertSign() {
-        realNumberBuilder.invertSign();
-        print(realNumberBuilder.build());
+    void insertFractionalPart() {
+        realNumberBuilder.insertFractional();
     }
 
     void selectOperation(CalculatorOperation calculatorOperation) {
