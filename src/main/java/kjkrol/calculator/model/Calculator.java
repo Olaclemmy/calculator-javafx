@@ -1,6 +1,6 @@
 package kjkrol.calculator.model;
 
-import kjkrol.calculator.base.CalculatorMathOperation;
+import kjkrol.calculator.base.MathOperation;
 
 import java.util.function.Consumer;
 
@@ -43,9 +43,9 @@ public class Calculator {
         realNumberBuilder.insertFractional();
     }
 
-    public void selectOperation(CalculatorMathOperation calculatorMathOperation) {
+    public void selectOperation(MathOperation mathOperation) {
         Double param = realNumberBuilder.build();
-        session.prepare(param, calculatorMathOperation);
+        session.prepare(param, mathOperation);
         realNumberBuilder.reset();
     }
 

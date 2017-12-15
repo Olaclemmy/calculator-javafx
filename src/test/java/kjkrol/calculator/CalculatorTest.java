@@ -1,6 +1,6 @@
 package kjkrol.calculator;
 
-import kjkrol.calculator.base.CalculatorMathOperation;
+import kjkrol.calculator.base.MathOperation;
 import kjkrol.calculator.model.Calculator;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(output::append);
         calculator.insertSymbol("1");
         calculator.insertSymbol("0");
-        calculator.selectOperation(CalculatorMathOperation.ADD);
+        calculator.selectOperation(MathOperation.ADD);
         calculator.insertSymbol("7");
         output.setLength(0);
 

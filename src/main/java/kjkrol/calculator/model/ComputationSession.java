@@ -1,16 +1,16 @@
 package kjkrol.calculator.model;
 
-import kjkrol.calculator.base.CalculatorMathOperation;
+import kjkrol.calculator.base.MathOperation;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 class ComputationSession {
-    private CalculatorMathOperation mathOperation;
+    private MathOperation mathOperation;
     private Double firstParam;
 
-    void prepare(Double firstParam, CalculatorMathOperation calculatorMathOperation) {
-        this.mathOperation = calculatorMathOperation;
+    void prepare(Double firstParam, MathOperation mathOperation) {
+        this.mathOperation = mathOperation;
         if (isNull(this.firstParam)) {
             this.firstParam = firstParam;
         }

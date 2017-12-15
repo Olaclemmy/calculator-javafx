@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import kjkrol.calculator.model.Calculator;
 
-import static kjkrol.calculator.base.CalculatorMathOperation.ADD;
-import static kjkrol.calculator.base.CalculatorMathOperation.MULTIPLY;
-import static kjkrol.calculator.base.CalculatorMathOperation.SUBTRACT;
+import static kjkrol.calculator.base.MathOperation.ADD;
+import static kjkrol.calculator.base.MathOperation.MULTIPLY;
+import static kjkrol.calculator.base.MathOperation.SUBTRACT;
 
 public class CalculatorController {
 
@@ -45,12 +45,12 @@ public class CalculatorController {
 
     @FXML
     private void divide(ActionEvent actionEvent) {
-        System.out.println("CalculatorMathOperation is not implemented yet");
+        System.out.println("MathOperation is not implemented yet");
     }
 
     @FXML
     private void percentOf(ActionEvent actionEvent) {
-        System.out.println("CalculatorMathOperation is not implemented yet");
+        System.out.println("MathOperation is not implemented yet");
     }
 
     @FXML

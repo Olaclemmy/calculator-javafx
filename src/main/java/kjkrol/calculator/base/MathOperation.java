@@ -2,14 +2,14 @@ package kjkrol.calculator.base;
 
 import java.util.function.BiFunction;
 
-public enum CalculatorMathOperation {
+public enum MathOperation {
     ADD((a, b) -> a + b),
     SUBTRACT((a, b) -> a - b),
     MULTIPLY((a, b) -> a * b);
 
     private BiFunction<Double, Double, Double> biFunction;
 
-    CalculatorMathOperation(BiFunction<Double, Double, Double> biFunction) {
+    MathOperation(BiFunction<Double, Double, Double> biFunction) {
         this.biFunction = biFunction;
     }
 
