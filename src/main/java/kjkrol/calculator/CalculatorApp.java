@@ -17,7 +17,7 @@ public class CalculatorApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/calculator-ui.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/calculator-view.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
