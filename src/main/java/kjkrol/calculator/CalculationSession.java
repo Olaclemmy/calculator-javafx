@@ -1,5 +1,6 @@
 package kjkrol.calculator;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 class CalculationSession {
@@ -8,7 +9,9 @@ class CalculationSession {
 
     void prepare(Double firstParam, CalculatorOperation calculatorOperation) {
         this.calculatorOperation = calculatorOperation;
-        this.firstParam = firstParam;
+        if (isNull(this.firstParam)) {
+            this.firstParam = firstParam;
+        }
     }
 
     boolean isReady() {
@@ -18,10 +21,11 @@ class CalculationSession {
     Double execute(Double secondParam) {
         Double result = calculatorOperation.execute(firstParam, secondParam);
         calculatorOperation = null;
+        firstParam = result;
         return result;
     }
 
-    void clear() {
+    void reset() {
         calculatorOperation = null;
         firstParam = null;
     }

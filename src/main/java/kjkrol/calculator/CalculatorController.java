@@ -62,7 +62,12 @@ public class CalculatorController {
         calculatorModel.invertSign();
     }
 
-    private void displayOnOutput(String text) {
-        output.setText(text);
+    @FXML
+    private void insertFractionalPart(ActionEvent actionEvent) {
+        calculatorModel.insertFractionalPart();
+    }
+
+    private void displayOnOutput(Double number) {
+        output.setText(number.toString());
     }
 }

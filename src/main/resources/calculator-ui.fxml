@@ -8,32 +8,30 @@
 <GridPane xmlns="http://javafx.com/javafx/8.0.121"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="kjkrol.calculator.CalculatorController" stylesheets="@calculator.css">
-    <TextField fx:id="output" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" editable="false"/>
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <HBox>
-            <Button text="AC" styleClass="action-button" onAction="#clear"/>
-            <Button text="±" styleClass="action-button" onAction="#invertSign"/>
-            <Button text="\%" styleClass="action-button" onAction="#percentOf" disable="true"/>
-        </HBox>
-        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
-            <Button text="7" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Button text="8" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Button text="9" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-            <Button text="4" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <Button text="5" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-            <Button text="6" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-            <Button text="1" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-            <Button text="2" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-            <Button text="3" styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-            <Button text="0" styleClass="numpad-zero-button" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
-            <Button text="." styleClass="numpad-button" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-        </GridPane>
-    </VBox>
-    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <TextField fx:id="output" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" text="0.0" focusTraversable="false" editable="false"/>
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Button text="AC" styleClass="action-button" onAction="#clear"/>
+        <Button text="±" styleClass="action-button" onAction="#invertSign"/>
+        <Button text="\%" styleClass="action-button" onAction="#percentOf" disable="true"/>
+    </HBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4">
         <Button text="/" styleClass="operation-button" onAction="#divide" disable="true"/>
-        <Button text="*" styleClass="operation-button" onAction="#multiply"/>
+        <Button text="x" styleClass="operation-button" onAction="#multiply"/>
         <Button text="-" styleClass="operation-button" onAction="#subtract"/>
         <Button text="+" styleClass="operation-button" onAction="#add"/>
         <Button text="=" styleClass="operation-button" onAction="#calculate"/>
     </VBox>
+    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Button text="7" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Button text="8" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button text="9" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Button text="4" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Button text="5" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button text="6" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Button text="1" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Button text="2" onAction="#insertSymbol" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button text="3" onAction="#insertSymbol" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Button text="0" styleClass="numpad-zero-button" onAction="#insertSymbol" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
+        <Button text="." onAction="#insertFractionalPart" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+    </GridPane>
 </GridPane>

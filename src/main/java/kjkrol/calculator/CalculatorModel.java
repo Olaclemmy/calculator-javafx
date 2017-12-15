@@ -1,60 +1,55 @@
 package kjkrol.calculator;
 
-import java.util.Objects;
 import java.util.function.Consumer;
-
-import static java.lang.Double.parseDouble;
 
 class CalculatorModel {
 
     private final CalculationSession session = new CalculationSession();
-    private final StringBuilder stringBuilder = new StringBuilder();
-    private final Consumer<String> output;
+    private final RealNumberBuilder realNumberBuilder = new RealNumberBuilder();
+    private final Consumer<Double> output;
 
-    CalculatorModel(Consumer<String> output) {
+    CalculatorModel(Consumer<Double> output) {
         this.output = output;
     }
 
     void insertSymbol(String text) {
-        stringBuilder.append(text);
-        print();
+        realNumberBuilder.append(text.charAt(0));
+        print(realNumberBuilder.build());
     }
 
     void clear() {
-        stringBuilder.setLength(0);
-        session.clear();
-        print();
+        realNumberBuilder.reset();
+        session.reset();
+        print(realNumberBuilder.build());
     }
 
     void calculate() {
         if (session.isReady()) {
-            Double param = parseDouble(stringBuilder.toString());
+            Double param = realNumberBuilder.build();
+            realNumberBuilder.reset();
             Double result = session.execute(param);
-            stringBuilder.setLength(0);
-            stringBuilder.append(result);
-            print();
+            print(result);
         }
+    }
+
+    void insertFractionalPart() {
+        realNumberBuilder.insertFractional();
     }
 
     void invertSign() {
-        if (Objects.equals(stringBuilder.toString(), "0")) {
-            return;
-        } else if (stringBuilder.toString().startsWith("-")) {
-            stringBuilder.deleteCharAt(0);
-        } else {
-            stringBuilder.insert(0, "-");
-        }
-        print();
+        realNumberBuilder.invertSign();
+        print(realNumberBuilder.build());
     }
 
     void selectOperation(CalculatorOperation calculatorOperation) {
-        Double param = parseDouble(stringBuilder.toString());
+        Double param = realNumberBuilder.build();
         session.prepare(param, calculatorOperation);
-        stringBuilder.setLength(0);
+        realNumberBuilder.reset();
     }
 
-    private void print() {
-        output.accept(stringBuilder.toString());
+    private void print(Double number) {
+        output.accept(number);
     }
 
 }
+
