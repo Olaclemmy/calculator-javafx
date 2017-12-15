@@ -1,4 +1,4 @@
-package kjkrol.calculator;
+package kjkrol.calculator.model;
 
 import static java.lang.Double.parseDouble;
 

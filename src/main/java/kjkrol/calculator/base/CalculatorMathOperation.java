@@ -1,19 +1,19 @@
-package kjkrol.calculator;
+package kjkrol.calculator.base;
 
 import java.util.function.BiFunction;
 
-enum CalculatorOperation {
+public enum CalculatorMathOperation {
     ADD((a, b) -> a + b),
     SUBTRACT((a, b) -> a - b),
     MULTIPLY((a, b) -> a * b);
 
     private BiFunction<Double, Double, Double> biFunction;
 
-    CalculatorOperation(BiFunction<Double, Double, Double> biFunction) {
+    CalculatorMathOperation(BiFunction<Double, Double, Double> biFunction) {
         this.biFunction = biFunction;
     }
 
-    Double execute(Double a, Double b) {
+    public Double execute(Double a, Double b) {
         return biFunction.apply(a, b);
     }
 }

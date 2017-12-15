@@ -1,28 +1,30 @@
-package kjkrol.calculator;
+package kjkrol.calculator.model;
+
+import kjkrol.calculator.base.CalculatorMathOperation;
 
 import java.util.function.Consumer;
 
-class CalculatorModel {
+public class Calculator {
 
-    private final CalculationSession session = new CalculationSession();
+    private final ComputationSession session = new ComputationSession();
     private final RealNumberBuilder realNumberBuilder = new RealNumberBuilder();
     private final Consumer<Double> output;
 
-    CalculatorModel(Consumer<Double> output) {
+    public Calculator(Consumer<Double> output) {
         this.output = output;
     }
 
-    void insertSymbol(String text) {
+    public void insertSymbol(String text) {
         realNumberBuilder.append(text.charAt(0));
         print(realNumberBuilder.build());
     }
 
-    void invertSign() {
+    public void invertSign() {
         realNumberBuilder.invertSign();
         print(realNumberBuilder.build());
     }
 
-    void calculate() {
+    public void calculate() {
         if (session.isReady()) {
             Double param = realNumberBuilder.build();
             realNumberBuilder.reset();
@@ -31,19 +33,19 @@ class CalculatorModel {
         }
     }
 
-    void clear() {
+    public void clear() {
         realNumberBuilder.reset();
         session.reset();
         print(realNumberBuilder.build());
     }
 
-    void insertFractionalPart() {
+    public void insertFractionalPart() {
         realNumberBuilder.insertFractional();
     }
 
-    void selectOperation(CalculatorOperation calculatorOperation) {
+    public void selectOperation(CalculatorMathOperation calculatorMathOperation) {
         Double param = realNumberBuilder.build();
-        session.prepare(param, calculatorOperation);
+        session.prepare(param, calculatorMathOperation);
         realNumberBuilder.reset();
     }
 
