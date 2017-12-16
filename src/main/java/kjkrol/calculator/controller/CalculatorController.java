@@ -37,7 +37,6 @@ public class CalculatorController {
     @FXML
     private void startFractionalPart(ActionEvent actionEvent) {
         numPadScribe.startFractionalPart();
-        refreshDisplay();
     }
 
     @FXML
@@ -86,7 +85,6 @@ public class CalculatorController {
         double operand = parseDouble(displayedNumber);
         calculator.setFirstOperand(operand);
         calculator.setMathBinaryOperation(mathBinaryOperation);
-        refreshDisplay();
         numPadScribe.reset();
     }
 
