@@ -18,11 +18,14 @@ public class NumPadScribe {
     }
 
     public void writeSymbol(char symbol) {
-        StringBuilder selectedPart = selectNumberPart();
-        if (checkFirstElement(selectedPart)) {
-            selectedPart.setCharAt(0, symbol);
+        if (fractionalPartStarted) {
+            fractionalPart.append(symbol);
+            return;
+        }
+        if(checkFirstElementOfIntegerPart()) {
+            integerPart.setCharAt(0, symbol);
         } else {
-            selectedPart.append(symbol);
+            integerPart.append(symbol);
         }
     }
 
@@ -55,12 +58,8 @@ public class NumPadScribe {
         integerPart.append(0);
     }
 
-    private StringBuilder selectNumberPart() {
-        return fractionalPartStarted ? fractionalPart : integerPart;
-    }
-
-    private boolean checkFirstElement(StringBuilder stringBuilder) {
-        return stringBuilder.length() == 1 && stringBuilder.charAt(0) == '0';
+    private boolean checkFirstElementOfIntegerPart() {
+        return integerPart.length() == 1 && integerPart.charAt(0) == '0';
     }
 
     static class DoubleParser {
