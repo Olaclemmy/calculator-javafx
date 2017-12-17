@@ -8,9 +8,12 @@ import kjkrol.calculator.base.MathBinaryOperation;
 import kjkrol.calculator.model.Calculator;
 import kjkrol.calculator.model.NumPadScribe;
 
-import static java.lang.Double.parseDouble;
+import java.math.BigDecimal;
+
 import static kjkrol.calculator.base.MathBinaryOperation.ADD;
+import static kjkrol.calculator.base.MathBinaryOperation.DIVIDE;
 import static kjkrol.calculator.base.MathBinaryOperation.MULTIPLY;
+import static kjkrol.calculator.base.MathBinaryOperation.PERCENT_OF;
 import static kjkrol.calculator.base.MathBinaryOperation.SUBTRACT;
 
 public class CalculatorController {
@@ -29,60 +32,65 @@ public class CalculatorController {
     }
 
     @FXML
-    private void invertSign(ActionEvent actionEvent) {
+    private void invertSign() {
         numPadScribe.invertSign();
         refreshDisplay();
     }
 
     @FXML
-    private void startFractionalPart(ActionEvent actionEvent) {
+    private void startFractionalPart() {
         numPadScribe.startFractionalPart();
     }
 
     @FXML
-    private void add(ActionEvent actionEvent) {
+    private void add() {
         selectMathBinaryOperation(ADD);
     }
 
     @FXML
-    private void subtract(ActionEvent actionEvent) {
+    private void subtract() {
         selectMathBinaryOperation(SUBTRACT);
     }
 
     @FXML
-    private void multiply(ActionEvent actionEvent) {
+    private void multiply() {
         selectMathBinaryOperation(MULTIPLY);
     }
 
     @FXML
-    private void divide(ActionEvent actionEvent) {
-        System.out.println("MathBinaryOperation is not implemented yet");
+    private void divide() {
+        selectMathBinaryOperation(DIVIDE);
     }
 
     @FXML
-    private void percentOf(ActionEvent actionEvent) {
-        System.out.println("MathBinaryOperation is not implemented yet");
+    private void percentOf() {
+        selectMathBinaryOperation(PERCENT_OF);
     }
 
     @FXML
-    private void clear(ActionEvent actionEvent) {
+    private void clear() {
         numPadScribe.reset();
         calculator.reset();
         refreshDisplay();
     }
 
     @FXML
-    private void calculate(ActionEvent actionEvent) {
+    private void calculate() {
         String displayedNumber = numPadScribe.print();
-        double operand = parseDouble(displayedNumber);
-        double result = calculator.calculate(operand);
-        numPadScribe.overwrite(result);
-        refreshDisplay();
+        BigDecimal operand = new BigDecimal(displayedNumber);
+        try {
+            BigDecimal result = calculator.calculate(operand);
+            numPadScribe.overwrite(result);
+            refreshDisplay();
+        } catch (ArithmeticException e) {
+            clear();
+            output.setText("NAN");
+        }
     }
 
     private void selectMathBinaryOperation(MathBinaryOperation mathBinaryOperation) {
         String displayedNumber = numPadScribe.print();
-        double operand = parseDouble(displayedNumber);
+        BigDecimal operand = new BigDecimal(displayedNumber);
         calculator.setFirstOperand(operand);
         calculator.setMathBinaryOperation(mathBinaryOperation);
         numPadScribe.reset();

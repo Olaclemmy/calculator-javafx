@@ -2,10 +2,12 @@ package kjkrol.calculator.model;
 
 import org.junit.Test;
 
-import static java.lang.Double.MAX_VALUE;
-import static java.lang.Double.MIN_VALUE;
+import java.math.BigDecimal;
+
+import static java.math.BigDecimal.valueOf;
 import static kjkrol.calculator.base.MathBinaryOperation.ADD;
 import static kjkrol.calculator.base.MathBinaryOperation.MULTIPLY;
+import static kjkrol.calculator.base.MathBinaryOperation.SUBTRACT;
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
@@ -16,24 +18,34 @@ public class CalculatorTest {
     public void calculate() throws Exception {
 
         // Given
-        calculator.setFirstOperand(10);
+        calculator.setFirstOperand(valueOf(10));
         calculator.setMathBinaryOperation(ADD);
 
         // When
-        double result = calculator.calculate(7);
+        BigDecimal result = calculator.calculate(valueOf(7));
 
         // Then
-        assertEquals(17.0, result, MIN_VALUE);
+        assertEquals(valueOf(17), result);
 
         // And
-        calculator.setFirstOperand(10);
+        calculator.setFirstOperand(valueOf(10));
         calculator.setMathBinaryOperation(MULTIPLY);
 
         // When
-        result = calculator.calculate(2);
+        result = calculator.calculate(valueOf(2));
 
         // Then
-        assertEquals(20, result, MIN_VALUE);
+        assertEquals(valueOf(20), result);
+
+        // Given
+        calculator.setFirstOperand(valueOf(6.1));
+        calculator.setMathBinaryOperation(SUBTRACT);
+
+        // When
+        result = calculator.calculate(valueOf(6));
+
+        // Then
+        assertEquals(valueOf(0.1), result);
     }
 
 }

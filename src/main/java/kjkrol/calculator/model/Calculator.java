@@ -2,14 +2,16 @@ package kjkrol.calculator.model;
 
 import kjkrol.calculator.base.MathBinaryOperation;
 
+import java.math.BigDecimal;
+
 import static java.util.Objects.nonNull;
 
 public class Calculator {
 
     private MathBinaryOperation mathBinaryOperation;
-    private Double firstOperand;
+    private BigDecimal firstOperand;
 
-    public void setFirstOperand(double operand) {
+    public void setFirstOperand(BigDecimal operand) {
         firstOperand = operand;
     }
 
@@ -17,9 +19,9 @@ public class Calculator {
         this.mathBinaryOperation = mathBinaryOperation;
     }
 
-    public double calculate(double secondOperand) {
+    public BigDecimal calculate(BigDecimal secondOperand) {
         if (isReady()) {
-            double result = mathBinaryOperation.execute(firstOperand, secondOperand);
+            BigDecimal result = mathBinaryOperation.execute(firstOperand, secondOperand);
             reset();
             return result;
         }

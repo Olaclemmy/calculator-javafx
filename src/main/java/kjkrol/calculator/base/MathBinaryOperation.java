@@ -1,19 +1,24 @@
 package kjkrol.calculator.base;
 
+import java.math.BigDecimal;
 import java.util.function.BiFunction;
 
+import static java.math.RoundingMode.HALF_UP;
+
 public enum MathBinaryOperation {
-    ADD((a, b) -> a + b),
-    SUBTRACT((a, b) -> a - b),
-    MULTIPLY((a, b) -> a * b);
+    ADD(BigDecimal::add),
+    SUBTRACT(BigDecimal::subtract),
+    MULTIPLY(BigDecimal::multiply),
+    DIVIDE((a, b) -> a.divide(b, HALF_UP)),
+    PERCENT_OF((a, b) -> a.multiply(b).divide(BigDecimal.valueOf(100), HALF_UP));
 
-    private BiFunction<Double, Double, Double> biFunction;
+    private BiFunction<BigDecimal, BigDecimal, BigDecimal> biFunction;
 
-    MathBinaryOperation(BiFunction<Double, Double, Double> biFunction) {
+    MathBinaryOperation(BiFunction<BigDecimal, BigDecimal, BigDecimal> biFunction) {
         this.biFunction = biFunction;
     }
 
-    public Double execute(Double a, Double b) {
+    public BigDecimal execute(BigDecimal a, BigDecimal b) {
         return biFunction.apply(a, b);
     }
 }

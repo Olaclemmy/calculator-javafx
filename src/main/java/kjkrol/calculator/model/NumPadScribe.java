@@ -1,5 +1,6 @@
 package kjkrol.calculator.model;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class NumPadScribe {
     private final StringBuilder integerPart = new StringBuilder().append(0);
     private final StringBuilder fractionalPart = new StringBuilder();
 
-    public void overwrite(double number) {
+    public void overwrite(BigDecimal number) {
         reset();
         parse(this, number);
     }
@@ -22,7 +23,7 @@ public class NumPadScribe {
             fractionalPart.append(symbol);
             return;
         }
-        if(checkFirstElementOfIntegerPart()) {
+        if (checkFirstElementOfIntegerPart()) {
             integerPart.setCharAt(0, symbol);
         } else {
             integerPart.append(symbol);
@@ -66,15 +67,15 @@ public class NumPadScribe {
 
         private static final Pattern DIGIT_PATTERN = compile("\\d+");
 
-        static void parse(NumPadScribe scribe, double number) {
-            String text = Double.toString(number);
+        static void parse(NumPadScribe scribe, BigDecimal number) {
+            String text = number.toEngineeringString();
             Matcher matcher = DIGIT_PATTERN.matcher(text);
             while (matcher.find()) {
                 String numberPart = matcher.group();
                 writeAllDigits(scribe, numberPart);
                 scribe.startFractionalPart();
             }
-            if (number < 0) {
+            if (number.signum() < 0) {
                 scribe.invertSign();
             }
         }

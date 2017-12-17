@@ -2,6 +2,9 @@ package kjkrol.calculator.model;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
+import static java.math.BigDecimal.valueOf;
 import static org.junit.Assert.*;
 
 public class NumPadScribeTest {
@@ -12,7 +15,7 @@ public class NumPadScribeTest {
     public void overwrite() throws Exception {
         // When:
         numPadScribe.writeSymbol('1');
-        numPadScribe.overwrite(3.14);
+        numPadScribe.overwrite(valueOf(3.14));
 
         // Then:
         assertEquals(numPadScribe.print(), "3.14");
