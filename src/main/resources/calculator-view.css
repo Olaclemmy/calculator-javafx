@@ -1,5 +1,6 @@
 .root {
-    -fx-background-color:lightgray;
+
+    -fx-background-color: transparent
 }
 
 .button {
@@ -15,6 +16,8 @@
 
 .operation-button {
     .button;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
     -fx-body-color: linear-gradient(orange, #FFA000);
  }
 
@@ -24,8 +27,11 @@
   }
 
 .output-text-field {
-    -fx-pref-width: 120pt;
-    -fx-background-color:transparent;
+    -fx-pref-width: 160pt;
+    -fx-pref-height: 50pt;
+    -fx-background-color: darkgray;
     -fx-alignment: center-right;
-    -fx-font-size: 16pt "Courier New";
+    -fx-font-size: 24pt;
+    -fx-font-family: 'Helvetica', Arial, sans-serif;
+    -fx-text-fill: white;
 }
