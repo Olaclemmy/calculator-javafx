@@ -1,11 +1,11 @@
-package kjkrol.calculator.base;
+package kjkrol.calculator.model;
 
 import java.math.BigDecimal;
 import java.util.function.BiFunction;
 
 import static java.math.RoundingMode.HALF_UP;
 
-public enum MathBinaryOperation {
+enum MathBinaryOperation {
     ADD(BigDecimal::add),
     SUBTRACT(BigDecimal::subtract),
     MULTIPLY(BigDecimal::multiply),

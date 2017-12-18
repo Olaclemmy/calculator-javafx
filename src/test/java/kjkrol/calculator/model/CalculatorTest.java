@@ -5,9 +5,9 @@ import org.junit.Test;
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.valueOf;
-import static kjkrol.calculator.base.MathBinaryOperation.ADD;
-import static kjkrol.calculator.base.MathBinaryOperation.MULTIPLY;
-import static kjkrol.calculator.base.MathBinaryOperation.SUBTRACT;
+import static kjkrol.calculator.model.MathBinaryOperation.ADD;
+import static kjkrol.calculator.model.MathBinaryOperation.MULTIPLY;
+import static kjkrol.calculator.model.MathBinaryOperation.SUBTRACT;
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
@@ -19,7 +19,7 @@ public class CalculatorTest {
 
         // Given
         calculator.setFirstOperand(valueOf(10));
-        calculator.setMathBinaryOperation(ADD);
+        calculator.setMathBinaryOperation(ADD.name());
 
         // When
         BigDecimal result = calculator.calculate(valueOf(7));
@@ -29,7 +29,7 @@ public class CalculatorTest {
 
         // And
         calculator.setFirstOperand(valueOf(10));
-        calculator.setMathBinaryOperation(MULTIPLY);
+        calculator.setMathBinaryOperation(MULTIPLY.name());
 
         // When
         result = calculator.calculate(valueOf(2));
@@ -39,7 +39,7 @@ public class CalculatorTest {
 
         // Given
         calculator.setFirstOperand(valueOf(6.1));
-        calculator.setMathBinaryOperation(SUBTRACT);
+        calculator.setMathBinaryOperation(SUBTRACT.name());
 
         // When
         result = calculator.calculate(valueOf(6));

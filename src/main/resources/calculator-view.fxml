@@ -8,18 +8,18 @@
 <GridPane xmlns="http://javafx.com/javafx/8.0.121"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="kjkrol.calculator.controller.CalculatorController" stylesheets="@calculator-view.css">
-    <TextField fx:id="output" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" text="0" focusTraversable="false"
+    <TextField fx:id="output" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" focusTraversable="false"
                editable="false"/>
     <HBox GridPane.columnIndex="0" GridPane.rowIndex="1">
         <Button text="AC" styleClass="action-button" onAction="#clear"/>
         <Button text="±" styleClass="action-button" onAction="#invertSign"/>
-        <Button text="\%" styleClass="action-button" onAction="#percentOf"/>
+        <Button fx:id="PERCENT_OF" text="\%" styleClass="action-button" onAction="#selectMathBinaryOperation"/>
     </HBox>
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4">
-        <Button text="/" styleClass="operation-button" onAction="#divide"/>
-        <Button text="x" styleClass="operation-button" onAction="#multiply"/>
-        <Button text="-" styleClass="operation-button" onAction="#subtract"/>
-        <Button text="+" styleClass="operation-button" onAction="#add"/>
+        <Button fx:id="DIVIDE" text="/" styleClass="operation-button" onAction="#selectMathBinaryOperation"/>
+        <Button fx:id="MULTIPLY" text="x" styleClass="operation-button" onAction="#selectMathBinaryOperation"/>
+        <Button fx:id="SUBTRACT" text="-" styleClass="operation-button" onAction="#selectMathBinaryOperation"/>
+        <Button fx:id="ADD" text="+" styleClass="operation-button" onAction="#selectMathBinaryOperation"/>
         <Button text="=" styleClass="operation-button" onAction="#calculate"/>
     </VBox>
     <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">

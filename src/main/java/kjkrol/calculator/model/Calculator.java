@@ -1,7 +1,5 @@
 package kjkrol.calculator.model;
 
-import kjkrol.calculator.base.MathBinaryOperation;
-
 import java.math.BigDecimal;
 
 import static java.util.Objects.nonNull;
@@ -15,8 +13,8 @@ public class Calculator {
         firstOperand = operand;
     }
 
-    public void setMathBinaryOperation(MathBinaryOperation mathBinaryOperation) {
-        this.mathBinaryOperation = mathBinaryOperation;
+    public void setMathBinaryOperation(String mathBinaryOperationName) {
+        mathBinaryOperation = MathBinaryOperation.valueOf(mathBinaryOperationName);
     }
 
     public BigDecimal calculate(BigDecimal secondOperand) {
