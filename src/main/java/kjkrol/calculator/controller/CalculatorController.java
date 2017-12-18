@@ -44,15 +44,17 @@ public class CalculatorController {
 
     @FXML
     private void selectMathBinaryOperation(ActionEvent actionEvent) {
+        BigDecimal operand;
         try {
-            BigDecimal operand = new BigDecimal(output.getText());
-            String mathBinaryOperationName = ((Button) actionEvent.getSource()).getId();
-            calculator.setFirstOperand(operand);
-            calculator.setMathBinaryOperation(mathBinaryOperationName);
-            numberScribe.reset();
+            operand = new BigDecimal(output.getText());
+
         } catch (NumberFormatException ex) {
-            // TODO: disable math operations buttons
+            operand = BigDecimal.ZERO;
         }
+        String mathBinaryOperationName = ((Button) actionEvent.getSource()).getId();
+        calculator.setFirstOperand(operand);
+        calculator.setMathBinaryOperation(mathBinaryOperationName);
+        numberScribe.reset();
     }
 
     @FXML
@@ -66,7 +68,6 @@ public class CalculatorController {
         } catch (ArithmeticException ex) {
             clear();
             output.setText("NAN");
-            // TODO: disable math operations buttons
         }
     }
 
