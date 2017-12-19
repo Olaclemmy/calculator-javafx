@@ -8,7 +8,7 @@
 <GridPane xmlns="http://javafx.com/javafx/8.0.121"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="kjkrol.calculator.controller.CalculatorController" stylesheets="@calculator-view.css">
-    <TextField fx:id="output" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" GridPane.rowSpan="1" focusTraversable="false"
+    <TextField fx:id="outputDisplay" styleClass="output-text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" GridPane.rowSpan="1" focusTraversable="false"
                editable="false"/>
     <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="1" GridPane.rowSpan="1">
         <Button text="AC" styleClass="action-button" onAction="#clear"/>
