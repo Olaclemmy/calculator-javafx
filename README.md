@@ -1,5 +1,5 @@
 # Calculator-JavaFX
-The main purpose of this project was to demonstrate how to adopt 
+The main purpose of this project was to learn basic about JavaFX and to adopt 
 [MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) in JavaFX base application.<br />
 
 ## Getting Started
@@ -9,13 +9,13 @@ The _view_ is defined in __.fxml__ file and __.css__ files.<br />
 
 ### Prerequisites
 
-To build an application, bellow components have to be installed:
+To compile, build and run the application the following components have to be installed:
 - at least JDK 1.8 <br />
 - latest Gradle version
 
 ### Building & running
 
-To build application open command line then move to project directory and run gradle wrappe by typeing:
+To build the application in terminal move to the project's directory and run gradle wrapper script (dedicated for your OS),  e.g.:
 ```
 ./gradlew clean build
 ```
