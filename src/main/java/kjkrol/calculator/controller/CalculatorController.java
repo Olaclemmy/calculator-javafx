@@ -15,19 +15,19 @@ public class CalculatorController {
     private final NumberScribe numberScribe = new NumberScribe();
 
     @FXML
-    private TextField output;
+    private TextField outputDisplay;
 
     @FXML
     private void writeSymbol(ActionEvent actionEvent) {
         char symbol = ((Button) actionEvent.getSource()).getText().charAt(0);
         numberScribe.writeSymbol(symbol);
-        refreshDisplay();
+        printScribedNumberOnDisplay();
     }
 
     @FXML
     private void invertSign() {
         numberScribe.invertSign();
-        refreshDisplay();
+        printScribedNumberOnDisplay();
     }
 
     @FXML
@@ -39,14 +39,14 @@ public class CalculatorController {
     private void clear() {
         numberScribe.reset();
         calculator.reset();
-        refreshDisplay();
+        printScribedNumberOnDisplay();
     }
 
     @FXML
     private void selectMathBinaryOperation(ActionEvent actionEvent) {
         BigDecimal operand;
         try {
-            operand = new BigDecimal(output.getText());
+            operand = new BigDecimal(outputDisplay.getText());
 
         } catch (NumberFormatException ex) {
             operand = BigDecimal.ZERO;
@@ -64,15 +64,15 @@ public class CalculatorController {
         try {
             BigDecimal result = calculator.calculate(operand);
             numberScribe.noteDown(result);
-            refreshDisplay();
+            printScribedNumberOnDisplay();
         } catch (ArithmeticException ex) {
             clear();
-            output.setText("NAN");
+            outputDisplay.setText("NAN");
         }
     }
 
-    private void refreshDisplay() {
+    private void printScribedNumberOnDisplay() {
         String displayedNumber = numberScribe.print();
-        output.setText(displayedNumber);
+        outputDisplay.setText(displayedNumber);
     }
 }
