@@ -1,6 +1,6 @@
 # Calculator-JavaFX
-The main purpose of this project was to learn basic about JavaFX and to adopt 
-[MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) in JavaFX base application.<br />
+The main purpose of this project was to learn JavaFX basisc and to adopt 
+[MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) into JavaFX base application.<br />
 
 ## Getting Started
 
